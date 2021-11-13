@@ -3,26 +3,18 @@ import { Document } from 'mongoose';
 
 export type TaskDocument = Task & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Task {
-  @Prop({
-    required: true,
-  })
+  @Prop({ required: true })
   task: string;
 
-  @Prop({
-    default: true,
-  })
+  @Prop({ default: true })
   isActive?: boolean;
 
-  @Prop({
-    default: false,
-  })
+  @Prop({ default: false })
   complete?: boolean;
 
-  @Prop({
-    required: false,
-  })
+  @Prop({ required: true })
   userId: string;
 }
 
