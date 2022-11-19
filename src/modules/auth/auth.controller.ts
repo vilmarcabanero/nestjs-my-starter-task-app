@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/decorators/get.user.decorator';
-import { AuthService } from '.';
+import { AuthService, LoginPayload } from '.';
 import { RegisterPayload } from './register.payload';
 
 @Controller('/api/auth')
@@ -14,7 +14,7 @@ export class AuthController {
   }
 
   @Post('/login')
-  async login(@Body() payload: RegisterPayload): Promise<object> {
+  async login(@Body() payload: LoginPayload): Promise<object> {
     return this.authService.login(payload);
   }
 
